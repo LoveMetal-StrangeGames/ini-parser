@@ -8,7 +8,7 @@ FileIniParser.cs
 	public IniData ReadFile(string filePath)
 	-- Windows-1252 (Encoding.Default) isn't supported on WinRT,
 	--> Changed the function body as a copy of public IniData ReadFile(string filePath, Encoding fileEncoding)
-	--> Changed new StreamReader(fs, fileEncoding) to new StreamReader(fs, fileEncoding), for trying
+	--> Changed new StreamReader(fs, fileEncoding) to new StreamReader(fs, true), for trying
 	--> to detect the encoding from the first bytes of the file.
 	
 FileIniParser.cs
@@ -21,7 +21,7 @@ FileIniParser.cs
 Model/IniData.cs, Model/KeyData.cs, Model/KeyDataCollection.cs, Model/SectionData.cs, 
 Model/SectionDataCollection.cs, Model/Configuration/IniParserConfiguration.cs
 	-- ICloneable interface doesn't exist in WinRT.
-	--> Created the interface in Exceptions/ICloneable.cs
+	--> Created the interface in Extensions/ICloneable.cs
 	
 Exceptions/ParsingException.cs
 	public ParsingException(string msg, int lineNumber, string lineValue, Exception innerException)
